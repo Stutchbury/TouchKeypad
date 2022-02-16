@@ -22,14 +22,21 @@
 #include "TouchKeypad.h"
 #endif
 
+#if defined(ARDUINO_ARCH_ESP32) || defined(ESP8266) || defined(CORE_TEENSY)
+  #include <functional>
+#endif
+
 /**
  * This class actually draws stuff on the display.
  */
 class DisplayTouchKeypad : public TouchKeypad {
 
   public:
-    //typedef void (*TouchKeyDrawFunction) (DisplayArea&);
-    typedef void (*TouchKeyDrawFunction) (TouchKey&);
+    #if defined(ARDUINO_ARCH_ESP32) || defined(ESP8266) || defined(CORE_TEENSY)
+      typedef std::function<void(TouchKey &btn)> TouchKeyDrawFunction;
+    #else
+      typedef void (*TouchKeyDrawFunction) (TouchKey&);
+    #endif    
 
   
   protected:
@@ -158,6 +165,7 @@ class DisplayTouchKeypad : public TouchKeypad {
 
     void enable(bool b=true) {
       TouchKeypad::enable(b);
+      //@TODO This is probaly not a good idea...
       gfx.fillRect(x(), y(), w(), h(), bgColour);
       forceRefresh = b;
     }

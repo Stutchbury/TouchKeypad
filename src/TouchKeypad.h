@@ -49,6 +49,10 @@
 
 #include "Arduino.h"
 
+#if defined(ARDUINO_ARCH_ESP32) || defined(ESP8266) || defined(CORE_TEENSY)
+  #include <functional>
+#endif
+
 class TouchKeypad; //Forward declare
 
 /** ******************************************************************************
@@ -59,7 +63,11 @@ class TouchKeypad; //Forward declare
 class TouchKey : public DisplayArea {
 
   public:
+    #if defined(ARDUINO_ARCH_ESP32) || defined(ESP8266) || defined(CORE_TEENSY)
+      typedef std::function<void(TouchKey &btn)> TouchKeyFunction;
+    #else
     typedef void (*TouchKeyFunction) (TouchKey&);
+    #endif    
 
   private:
     TouchKeypad* keypad;
