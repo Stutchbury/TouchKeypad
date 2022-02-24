@@ -300,7 +300,7 @@ class TouchKeypad : public DisplayArea {
      * 
      * @param e 
      */
-    void enable(bool e);
+    void enable(bool e = true);
 
     /**
      * Set the keypad user identifier
