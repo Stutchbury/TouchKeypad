@@ -1,6 +1,6 @@
 {
   "name": "TouchKeypad",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A keypad for touchscreens. Provides (relatively) easy creation of a keypad touch interface with events fired (touch and repeat touch) with visual feedback of touch interactions.",
   "keywords": "touchscreen, keypad",
   "repository":
