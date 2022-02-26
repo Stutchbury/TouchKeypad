@@ -139,10 +139,7 @@ class DisplayTouchKeypad : public TouchKeypad {
     uint16_t fgColour = 65535; //white
     uint16_t bgColour = 0; //black
     uint16_t touchedColour = 65535; //white
-
   
-  private:
-
     TouchKeyDrawFunction keyLabelFunctions[TOUCH_KEYPAD_MAX_ROWS][TOUCH_KEYPAD_MAX_COLS];
     unsigned int drawnUserId[TOUCH_KEYPAD_MAX_ROWS][TOUCH_KEYPAD_MAX_COLS];
     unsigned int drawnUserState[TOUCH_KEYPAD_MAX_ROWS][TOUCH_KEYPAD_MAX_COLS];
